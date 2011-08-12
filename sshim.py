@@ -38,6 +38,8 @@ class Server(threading.Thread):
     def __init__(self, script, address='127.0.0.1', port=22, key=DEFAULT_KEY):
         threading.Thread.__init__(self)
         self.script = script
+        self.address = address
+        self.port = port
         self.daemon = True
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -119,7 +121,7 @@ class Script(object):
         self.values = {}
 
     def __getitem__(self, key):
-        return self.values[key]
+        return self.values.get(key)
 
     def __setitem__(self, key, value):
         self.values[key] = value
