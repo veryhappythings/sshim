@@ -8,6 +8,5 @@ python:
 
 install:
   - "pip install -e ."
-  - "pip install coverage"
 
-script: nosetests --with-coverage --cover-inclusive --cover-package=sshim
+script: nosetests
